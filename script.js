@@ -27,3 +27,29 @@ const addEventsOnElement = (elements, eventType, callback) => {
 };
 
 addEventsOnElement(navTogglers, "click", toggleNavbar);
+
+const header = document.querySelector("[data-header]");
+
+let lastScrollPos = 0;
+
+const hideHeader = () => {
+  const isScrollingFromBottom = lastScrollPos > window.scrollY;
+
+  if (isScrollingFromBottom) {
+    header.classList.remove("hide");
+  } else {
+    setTimeout(() => {
+      header.classList.add("hide");
+    }, 1000);
+  }
+  lastScrollPos = window.scrollY;
+};
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 50) {
+    header.classList.add("active");
+    hideHeader();
+  } else {
+    header.classList.remove("active");
+  }
+});
