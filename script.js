@@ -53,3 +53,9 @@ window.addEventListener("scroll", () => {
     header.classList.remove("active");
   }
 });
+
+const heroSliderPrevBtn = document.querySelector("[data-prev-btn]");
+const heroSliderNextBtn = document.querySelector("[data-next-btn]");
+const heroSliderItems = document.querySelectorAll("[data-hero-slider-item]");
+
+let lastActiveSliderItem = heroSliderItems[0];
