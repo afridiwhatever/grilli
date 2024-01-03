@@ -741,6 +741,7 @@ place-items: center;
 transform: translateY(-50%) rotate(45deg);
 z-index: 1;
 transition: var(--transition-1);
+display: none;
 }
 
 .hero .slider-btn ion-icon{

@@ -56,6 +56,59 @@ window.addEventListener("scroll", () => {
 
 const heroSliderPrevBtn = document.querySelector("[data-prev-btn]");
 const heroSliderNextBtn = document.querySelector("[data-next-btn]");
-const heroSliderItems = document.querySelectorAll("[data-hero-slider-item]");
+
+const heroSliderItems = Array.from(
+  document.querySelectorAll("[data-hero-slider-item]")
+);
 
 let lastActiveSliderItem = heroSliderItems[0];
+let currentSlidePos = 0;
+
+const updateSlide = () => {
+  lastActiveSliderItem.classList.remove("active");
+  heroSliderItems[currentSlidePos].classList.add("active");
+  lastActiveSliderItem = heroSliderItems[currentSlidePos];
+};
+
+const slideNext = () => {
+  if (currentSlidePos < heroSliderItems.length - 1) {
+    currentSlidePos++;
+  } else {
+    currentSlidePos = 0;
+  }
+  updateSlide();
+};
+
+heroSliderNextBtn.addEventListener("click", slideNext);
+
+const slidePrev = () => {
+  if (currentSlidePos === 0) {
+    currentSlidePos = heroSliderItems.length - 1;
+  } else {
+    currentSlidePos--;
+  }
+
+  updateSlide();
+};
+
+heroSliderPrevBtn.addEventListener("click", slidePrev);
+
+let autoSlideInterval;
+
+const autoSlide = () => {
+  autoSlideInterval = setInterval(() => {
+    slideNext();
+  }, 5000);
+};
+
+addEventsOnElement([heroSliderNextBtn, heroSliderPrevBtn], "mouseover", () => {
+  clearInterval(autoSlideInterval);
+});
+
+addEventsOnElement(
+  [heroSliderNextBtn, heroSliderPrevBtn],
+  "mouseout",
+  autoSlide
+);
+
+window.addEventListener("load", autoSlide);
