@@ -344,11 +344,11 @@ body.nav-active {
 /* -------------------------------------------- */
 
 .topbar {
-  display: flex;
+  /* display: flex;
   display: none;
   justify-content: space-between;
   padding-inline: 10px;
-  padding-block: 10px;
+  padding-block: 10px; */
   /* position: fixed;
   top: 0;
   left: 0;
@@ -1612,8 +1612,39 @@ textarea.input-field {
 }
 
 /* ---------------------------------------------*/
-/*                     */
+/*                     MEDIA QUERIES            */
 /* -------------------------------------------- */
+
+/* screen range: 575px - 768px (SMALL DEVICES) */
+@media (min-width: 575px) {
+  :root {
+    --fontSize-body-2: 2rem;
+  }
+
+  :is(.about, .service) .section-text {
+    max-width: 420px;
+    margin-inline: auto;
+  }
+
+  .contact-number {
+    --fontSize-body-1: 3rem;
+  }
+
+  /* topbar */
+
+  .topbar {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 4;
+    width: 100%;
+    padding-block: 10px;
+    transition: var(--transition-1);
+    border-block-end: 1px solid var(--white-alpha-20);
+  }
+}
+
 /* ---------------------------------------------*/
 /*                     */
 /* -------------------------------------------- */
