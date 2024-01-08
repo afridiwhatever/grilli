@@ -1912,6 +1912,21 @@ textarea.input-field {
     display: grid;
     grid-template-columns: 1fr 0.5fr;
   }
+
+  .footer .grid-list {
+    grid-template-columns: 0.45fr 1fr 0.45fr;
+    align-items: center;
+  }
+
+  .footer-top .footer-brand {
+    grid-column: auto;
+    order: 1;
+    padding-block: 100px;
+  }
+
+  .footer .footer-list:last-child {
+    order: 2;
+  }
 }
 /* ---------------------------------------------*/
 /*                     */
