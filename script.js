@@ -29,6 +29,7 @@ const addEventsOnElement = (elements, eventType, callback) => {
 addEventsOnElement(navTogglers, "click", toggleNavbar);
 
 const header = document.querySelector("[data-header]");
+const backTopBtn = document.querySelector("[data-back-top-btn]");
 
 let lastScrollPos = 0;
 
@@ -48,9 +49,11 @@ const hideHeader = () => {
 window.addEventListener("scroll", () => {
   if (window.scrollY > 50) {
     header.classList.add("active");
+    backTopBtn.classList.add("active");
     hideHeader();
   } else {
     header.classList.remove("active");
+    backTopBtn.classList.remove("active");
   }
 });
 
@@ -96,9 +99,9 @@ heroSliderPrevBtn.addEventListener("click", slidePrev);
 let autoSlideInterval;
 
 const autoSlide = () => {
-  //   autoSlideInterval = setInterval(() => {
-  //     slideNext();
-  //   }, 5000);
+  autoSlideInterval = setInterval(() => {
+    slideNext();
+  }, 5000);
 };
 
 addEventsOnElement([heroSliderNextBtn, heroSliderPrevBtn], "mouseover", () => {
